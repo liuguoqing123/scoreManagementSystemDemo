@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LogAspect</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.demo.common</a>
+</div>
+
+<h1>Coverage Summary for Class: LogAspect (com.demo.common)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LogAspect</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.demo.common;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.demo.common.DateUtil;
+<i class="no-highlight">4</i>&nbsp;import lombok.extern.slf4j.Slf4j;
+<i class="no-highlight">5</i>&nbsp;import org.aspectj.lang.JoinPoint;
+<i class="no-highlight">6</i>&nbsp;import org.aspectj.lang.annotation.After;
+<i class="no-highlight">7</i>&nbsp;import org.aspectj.lang.annotation.Aspect;
+<i class="no-highlight">8</i>&nbsp;import org.aspectj.lang.annotation.Before;
+<i class="no-highlight">9</i>&nbsp;import org.aspectj.lang.annotation.Pointcut;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.stereotype.Component;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;import java.util.Date;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;/**
+<i class="no-highlight">15</i>&nbsp; * @author Lewis
+<i class="no-highlight">16</i>&nbsp; */
+<i class="no-highlight">17</i>&nbsp;@Aspect
+<i class="no-highlight">18</i>&nbsp;@Component
+<b class="nc"><i class="no-highlight">19</i>&nbsp;@Slf4j</b>
+<b class="nc"><i class="no-highlight">20</i>&nbsp;public class LogAspect {</b>
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    private Long startTime;
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    @Pointcut(&quot;(execution(public * com.demo.service.impl.*.*(..)))&quot;)
+<i class="no-highlight">25</i>&nbsp;    public void pointCut() {
+<i class="no-highlight">26</i>&nbsp;        // Do nothing because of Pointcut.
+<i class="no-highlight">27</i>&nbsp;    }
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    @Before(value = &quot;pointCut()&quot;)
+<i class="no-highlight">30</i>&nbsp;    public void printBeginLog(JoinPoint joinPoint) {
+<i class="no-highlight">31</i>&nbsp;
+<b class="nc"><i class="no-highlight">32</i>&nbsp;        startTime = System.currentTimeMillis();</b>
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        log.info(&quot;the method {} is beginning at {}.......&quot;,  joinPoint.getSignature().getName(), DateUtil.getCurrentDateWithYYYYMMDDHHMMSS2(new Date()));</b>
+<i class="no-highlight">34</i>&nbsp;    }
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;    @After(value = &quot;pointCut()&quot;)
+<i class="no-highlight">37</i>&nbsp;    public void printEndLog(JoinPoint joinPoint) {
+<b class="nc"><i class="no-highlight">38</i>&nbsp;        Long endTime = System.currentTimeMillis();</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        log.info(&quot;the method {} is end, elapsed time is {}s.......&quot;, joinPoint.getSignature().getName(), (double) (endTime - startTime) / 1000);</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-09 22:28</div>
+</div>
+</body>
+</html>
