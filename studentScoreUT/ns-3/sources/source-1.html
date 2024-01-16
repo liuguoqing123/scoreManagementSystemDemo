@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > DemoController</title>
+  <title>Coverage Report > ScoresController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.demo.controller</a>
 </div>
 
-<h1>Coverage Summary for Class: DemoController (com.demo.controller)</h1>
+<h1>Coverage Summary for Class: ScoresController (com.demo.controller)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">DemoController</td>
+  <td class="name">ScoresController</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -53,7 +53,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/7)
+    (0/8)
   </span>
 </td>
 <td class="coverageStat">
@@ -61,7 +61,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/18)
+    (0/20)
   </span>
 </td>
 </tr>
@@ -77,103 +77,110 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;
 <i class="no-highlight">4</i>&nbsp;import com.demo.common.BaseResult;
-<i class="no-highlight">5</i>&nbsp;import com.demo.domain.dto.ScoreInfoDto;
-<i class="no-highlight">6</i>&nbsp;import com.demo.domain.dto.StudentListDto;
-<i class="no-highlight">7</i>&nbsp;import com.demo.service.DemoService;
-<i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;import com.demo.common.BaseResultUtil;
-<i class="no-highlight">10</i>&nbsp;import com.demo.domain.bo.Score;
-<i class="no-highlight">11</i>&nbsp;import lombok.extern.slf4j.Slf4j;
-<i class="no-highlight">12</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
-<i class="no-highlight">13</i>&nbsp;import org.springframework.validation.annotation.Validated;
-<i class="no-highlight">14</i>&nbsp;import org.springframework.web.bind.annotation.*;
-<i class="no-highlight">15</i>&nbsp;import javax.servlet.http.HttpServletRequest;
-<i class="no-highlight">16</i>&nbsp;
-<i class="no-highlight">17</i>&nbsp;import java.util.HashMap;
-<i class="no-highlight">18</i>&nbsp;import java.util.List;
-<i class="no-highlight">19</i>&nbsp;import java.util.Map;
-<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import com.demo.domain.bo.Scores;
+<i class="no-highlight">6</i>&nbsp;import com.demo.domain.dto.ScoreInfoDto;
+<i class="no-highlight">7</i>&nbsp;import com.demo.domain.vo.ScoreInfoVo;
+<i class="no-highlight">8</i>&nbsp;import com.demo.domain.dto.StudentScoresListDto;
+<i class="no-highlight">9</i>&nbsp;import com.demo.service.ScoresService;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;import com.demo.common.BaseResultUtil;
+<i class="no-highlight">12</i>&nbsp;import lombok.extern.slf4j.Slf4j;
+<i class="no-highlight">13</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">14</i>&nbsp;import org.springframework.validation.annotation.Validated;
+<i class="no-highlight">15</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i class="no-highlight">16</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;import java.util.HashMap;
+<i class="no-highlight">19</i>&nbsp;import java.util.List;
+<i class="no-highlight">20</i>&nbsp;import java.util.Map;
 <i class="no-highlight">21</i>&nbsp;
-<i class="no-highlight">22</i>&nbsp;/**
-<i class="no-highlight">23</i>&nbsp; *@author:  lewis-Liu
-<i class="no-highlight">24</i>&nbsp; *@Description DemoController
-<i class="no-highlight">25</i>&nbsp; */
-<i class="no-highlight">26</i>&nbsp;@RestController
-<i class="no-highlight">27</i>&nbsp;@Validated
-<b class="nc"><i class="no-highlight">28</i>&nbsp;@Slf4j</b>
-<b class="nc"><i class="no-highlight">29</i>&nbsp;public class DemoController {</b>
-<i class="no-highlight">30</i>&nbsp;
-<i class="no-highlight">31</i>&nbsp;    @Autowired
-<i class="no-highlight">32</i>&nbsp;    private DemoService demoService;
-<i class="no-highlight">33</i>&nbsp;
-<i class="no-highlight">34</i>&nbsp;    private static final String ERR_MSG = &quot;errMsg&quot;;
-<i class="no-highlight">35</i>&nbsp;
-<i class="no-highlight">36</i>&nbsp;    /**
-<i class="no-highlight">37</i>&nbsp;     * ??
-<i class="no-highlight">38</i>&nbsp;     * @param request
-<i class="no-highlight">39</i>&nbsp;     * @param studentListDto
-<i class="no-highlight">40</i>&nbsp;     * @return
-<i class="no-highlight">41</i>&nbsp;     */
-<i class="no-highlight">42</i>&nbsp;    @PostMapping(&quot;/getStudentList&quot;)
-<i class="no-highlight">43</i>&nbsp;    public BaseResult getStudentList(HttpServletRequest request,@RequestBody StudentListDto studentListDto) {
-<b class="nc"><i class="no-highlight">44</i>&nbsp;        List&lt;Score&gt; userInfoList = demoService.getStudentList(studentListDto);</b>
-<b class="nc"><i class="no-highlight">45</i>&nbsp;        return BaseResultUtil.result(userInfoList);</b>
-<i class="no-highlight">46</i>&nbsp;    }
-<i class="no-highlight">47</i>&nbsp;
-<i class="no-highlight">48</i>&nbsp;    /**
-<i class="no-highlight">49</i>&nbsp;     * ??
-<i class="no-highlight">50</i>&nbsp;     * @param request
-<i class="no-highlight">51</i>&nbsp;     * @param score
-<i class="no-highlight">52</i>&nbsp;     * @return
-<i class="no-highlight">53</i>&nbsp;     */
-<i class="no-highlight">54</i>&nbsp;    @PostMapping(&quot;/insertStudent&quot;)
-<i class="no-highlight">55</i>&nbsp;    public BaseResult insertStudent(HttpServletRequest request, @RequestBody Score score) {
-<b class="nc"><i class="no-highlight">56</i>&nbsp;        String resultInsert = demoService.insertStudent(score);</b>
-<b class="nc"><i class="no-highlight">57</i>&nbsp;        Map resultMap = new HashMap&lt;&gt;();</b>
-<b class="nc"><i class="no-highlight">58</i>&nbsp;        resultMap.put(&quot;message&quot;,resultInsert);</b>
-<b class="nc"><i class="no-highlight">59</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
-<i class="no-highlight">60</i>&nbsp;    }
-<i class="no-highlight">61</i>&nbsp;
-<i class="no-highlight">62</i>&nbsp;    /**
-<i class="no-highlight">63</i>&nbsp;     * ??
-<i class="no-highlight">64</i>&nbsp;     * @param request
-<i class="no-highlight">65</i>&nbsp;     * @param score
-<i class="no-highlight">66</i>&nbsp;     * @return
-<i class="no-highlight">67</i>&nbsp;     */
-<i class="no-highlight">68</i>&nbsp;    @PostMapping(&quot;/updateStudent&quot;)
-<i class="no-highlight">69</i>&nbsp;    public BaseResult updateStudent(HttpServletRequest request, @RequestBody Score score) {
-<b class="nc"><i class="no-highlight">70</i>&nbsp;        String resultUpdate = demoService.updateStudent(score);</b>
-<b class="nc"><i class="no-highlight">71</i>&nbsp;        Map resultMap = new HashMap&lt;&gt;();</b>
-<b class="nc"><i class="no-highlight">72</i>&nbsp;        resultMap.put(&quot;message&quot;,resultUpdate);</b>
-<b class="nc"><i class="no-highlight">73</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
-<i class="no-highlight">74</i>&nbsp;    }
-<i class="no-highlight">75</i>&nbsp;
-<i class="no-highlight">76</i>&nbsp;    /**
-<i class="no-highlight">77</i>&nbsp;     * ??
-<i class="no-highlight">78</i>&nbsp;     * @param request
-<i class="no-highlight">79</i>&nbsp;     * @param student
-<i class="no-highlight">80</i>&nbsp;     * @return
-<i class="no-highlight">81</i>&nbsp;     */
-<i class="no-highlight">82</i>&nbsp;    @PostMapping(&quot;/deleteStudent&quot;)
-<i class="no-highlight">83</i>&nbsp;    public BaseResult deleteUserInfo(HttpServletRequest request, @RequestBody Map&lt;String,String&gt; student) {
-<b class="nc"><i class="no-highlight">84</i>&nbsp;        String resultDelete = demoService.deleteStudent(student.get(&quot;id&quot;));</b>
-<b class="nc"><i class="no-highlight">85</i>&nbsp;        Map resultMap = new HashMap&lt;&gt;();</b>
-<b class="nc"><i class="no-highlight">86</i>&nbsp;        resultMap.put(&quot;message&quot;,resultDelete);</b>
-<b class="nc"><i class="no-highlight">87</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
-<i class="no-highlight">88</i>&nbsp;    }
-<i class="no-highlight">89</i>&nbsp;
-<i class="no-highlight">90</i>&nbsp;    /**
-<i class="no-highlight">91</i>&nbsp;     * ???????????
-<i class="no-highlight">92</i>&nbsp;     * @param request
-<i class="no-highlight">93</i>&nbsp;     * @param scoreInfoDto
-<i class="no-highlight">94</i>&nbsp;     * @return
-<i class="no-highlight">95</i>&nbsp;     */
-<i class="no-highlight">96</i>&nbsp;    @PostMapping(&quot;/getScoreInfor&quot;)
-<i class="no-highlight">97</i>&nbsp;    public BaseResult getScoreInfor(HttpServletRequest request, @RequestBody ScoreInfoDto scoreInfoDto) {
-<b class="nc"><i class="no-highlight">98</i>&nbsp;        Map resultMap = demoService.getScoreInfor(scoreInfoDto);</b>
-<b class="nc"><i class="no-highlight">99</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
-<i class="no-highlight">100</i>&nbsp;    }
-<i class="no-highlight">101</i>&nbsp;}
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;/**
+<i class="no-highlight">24</i>&nbsp; *@author:  lewis-Liu
+<i class="no-highlight">25</i>&nbsp; *@Description ScoresController
+<i class="no-highlight">26</i>&nbsp; */
+<i class="no-highlight">27</i>&nbsp;@RestController
+<i class="no-highlight">28</i>&nbsp;@Validated
+<b class="nc"><i class="no-highlight">29</i>&nbsp;@Slf4j</b>
+<b class="nc"><i class="no-highlight">30</i>&nbsp;public class ScoresController {</b>
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    @Autowired
+<i class="no-highlight">33</i>&nbsp;    private ScoresService scoresService;
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;    private static final String ERR_MSG = &quot;errMsg&quot;;
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    /**
+<i class="no-highlight">38</i>&nbsp;     * ??
+<i class="no-highlight">39</i>&nbsp;     * @param request
+<i class="no-highlight">40</i>&nbsp;     * @param studentListDto
+<i class="no-highlight">41</i>&nbsp;     * @return
+<i class="no-highlight">42</i>&nbsp;     */
+<i class="no-highlight">43</i>&nbsp;    @PostMapping(&quot;/getScoresList&quot;)
+<i class="no-highlight">44</i>&nbsp;    public BaseResult getScoresList(HttpServletRequest request, @RequestBody StudentScoresListDto studentListDto) {
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        List&lt;ScoreInfoVo&gt; scoresList = scoresService.getScoresList(studentListDto);</b>
+<b class="nc"><i class="no-highlight">46</i>&nbsp;        return BaseResultUtil.result(scoresList);</b>
+<i class="no-highlight">47</i>&nbsp;    }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    @PostMapping(&quot;/getStudentScoresInfo&quot;)
+<i class="no-highlight">50</i>&nbsp;    public BaseResult getStudentScoresInfo(HttpServletRequest request, @RequestBody Map&lt;String,String&gt; scoresMap) {
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        Scores scores  = scoresService.getStudentScoresInfo(scoresMap.get(&quot;studentNumber&quot;));</b>
+<b class="nc"><i class="no-highlight">52</i>&nbsp;        return BaseResultUtil.result(scores);</b>
+<i class="no-highlight">53</i>&nbsp;    }
+<i class="no-highlight">54</i>&nbsp;
+<i class="no-highlight">55</i>&nbsp;    /**
+<i class="no-highlight">56</i>&nbsp;     * ??
+<i class="no-highlight">57</i>&nbsp;     * @param request
+<i class="no-highlight">58</i>&nbsp;     * @param scores
+<i class="no-highlight">59</i>&nbsp;     * @return
+<i class="no-highlight">60</i>&nbsp;     */
+<i class="no-highlight">61</i>&nbsp;    @PostMapping(&quot;/insertStudentScores&quot;)
+<i class="no-highlight">62</i>&nbsp;    public BaseResult insertStudentScores(HttpServletRequest request, @RequestBody Scores scores) {
+<b class="nc"><i class="no-highlight">63</i>&nbsp;        String resultInsert = scoresService.insertStudentScores(scores);</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        Map resultMap = new HashMap&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        resultMap.put(&quot;message&quot;,resultInsert);</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
+<i class="no-highlight">67</i>&nbsp;    }
+<i class="no-highlight">68</i>&nbsp;
+<i class="no-highlight">69</i>&nbsp;    /**
+<i class="no-highlight">70</i>&nbsp;     * ??
+<i class="no-highlight">71</i>&nbsp;     * @param request
+<i class="no-highlight">72</i>&nbsp;     * @param scores
+<i class="no-highlight">73</i>&nbsp;     * @return
+<i class="no-highlight">74</i>&nbsp;     */
+<i class="no-highlight">75</i>&nbsp;    @PostMapping(&quot;/updateStudentScores&quot;)
+<i class="no-highlight">76</i>&nbsp;    public BaseResult updateStudentScores(HttpServletRequest request, @RequestBody Scores scores) {
+<b class="nc"><i class="no-highlight">77</i>&nbsp;        String resultUpdate = scoresService.updateStudentScores(scores);</b>
+<b class="nc"><i class="no-highlight">78</i>&nbsp;        Map resultMap = new HashMap&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        resultMap.put(&quot;message&quot;,resultUpdate);</b>
+<b class="nc"><i class="no-highlight">80</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
+<i class="no-highlight">81</i>&nbsp;    }
+<i class="no-highlight">82</i>&nbsp;
+<i class="no-highlight">83</i>&nbsp;    /**
+<i class="no-highlight">84</i>&nbsp;     * ??
+<i class="no-highlight">85</i>&nbsp;     * @param request
+<i class="no-highlight">86</i>&nbsp;     * @param student
+<i class="no-highlight">87</i>&nbsp;     * @return
+<i class="no-highlight">88</i>&nbsp;     */
+<i class="no-highlight">89</i>&nbsp;    @PostMapping(&quot;/deleteStudentScores&quot;)
+<i class="no-highlight">90</i>&nbsp;    public BaseResult deleteStudentScores(HttpServletRequest request, @RequestBody Map&lt;String,String&gt; student) {
+<b class="nc"><i class="no-highlight">91</i>&nbsp;        String resultDelete = scoresService.deleteStudentScores(student.get(&quot;id&quot;));</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;        Map resultMap = new HashMap&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;        resultMap.put(&quot;message&quot;,resultDelete);</b>
+<b class="nc"><i class="no-highlight">94</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
+<i class="no-highlight">95</i>&nbsp;    }
+<i class="no-highlight">96</i>&nbsp;
+<i class="no-highlight">97</i>&nbsp;    /**
+<i class="no-highlight">98</i>&nbsp;     * ???????????
+<i class="no-highlight">99</i>&nbsp;     * @param request
+<i class="no-highlight">100</i>&nbsp;     * @param scoreInfoDto
+<i class="no-highlight">101</i>&nbsp;     * @return
+<i class="no-highlight">102</i>&nbsp;     */
+<i class="no-highlight">103</i>&nbsp;    @PostMapping(&quot;/getAvgScoreInfor&quot;)
+<i class="no-highlight">104</i>&nbsp;    public BaseResult getAvgScoreInfor(HttpServletRequest request, @RequestBody ScoreInfoDto scoreInfoDto) {
+<b class="nc"><i class="no-highlight">105</i>&nbsp;        Map resultMap = scoresService.getAvgScoreInfor(scoreInfoDto);</b>
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        return BaseResultUtil.result(resultMap);</b>
+<i class="no-highlight">107</i>&nbsp;    }
+<i class="no-highlight">108</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -200,7 +207,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-01-09 22:28</div>
+    <div style="float:right;">generated on 2024-01-16 16:00</div>
 </div>
 </body>
 </html>

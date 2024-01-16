@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.domain.mapper.ScoresMapper">
+
+    <resultMap type="com.demo.domain.vo.ScoreInfoVo" id="resultRM">
+        <result property="id" jdbcType="VARCHAR" column="id"/>
+        <result property="subject" jdbcType="VARCHAR" column="subject"/>
+        <result property="score" jdbcType="INTEGER" column="score"/>
+        <result property="type" jdbcType="VARCHAR" column="type"/>
+        <result property="stuNo" jdbcType="VARCHAR" column="stuNo"/>
+        <result property="name" jdbcType="VARCHAR" column="name"/>
+        <result property="classes" jdbcType="VARCHAR" column="classes"/>
+
+    </resultMap>
+
+    <resultMap type="com.demo.domain.bo.Scores" id="resultScoresRM">
+
+    </resultMap>
+
+    <select id="findScoreInfoList" resultMap="resultRM">
+        select sc.id,sc.subject,sc.score,sc.type,sc.stuNo,st.name,st.classes from students st with(NOLOCK),scores sc with(NOLOCK)
+        where st.stuNo = sc.stuNo
+        <if test="classes != null and classes != ''"> and st.classes = #{classes}</if>
+        <if test="name != null and name != ''"> and st.name = #{name}</if>
+        <if test="type != null and type != ''"> and sc.type = #{type}</if>
+    </select>
+
+    <select id="findAvgScoreInforlist" resultMap="resultRM">
+        select sc.id,sc.subject,sc.score,sc.type,sc.stuNo,st.name,st.classes from students st with(NOLOCK),scores sc with(NOLOCK)
+        where st.stuNo = sc.stuNo
+        <if test="classes != null and classes != ''"> and st.classes = #{classes}</if>
+        <if test="subject != null and subject != ''"> and sc.subject = #{subject}</if>
+        <if test="type != null and type != ''"> and sc.type = #{type}</if>
+    </select>
+
+</mapper>

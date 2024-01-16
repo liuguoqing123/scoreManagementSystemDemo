@@ -1,0 +1,130 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ScoresMapper</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.demo.domain.mapper</a>
+</div>
+
+<h1>Coverage Summary for Class: ScoresMapper (com.demo.domain.mapper)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$2S0qM64O</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$8iX1RUTJ</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$8xbc5zOn</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$ir4dVwuC</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$NGexLrwN</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$NmtsHgA6</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$oCwYNQof</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$PH3X5xvJ</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$PKwjadCd</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$qoODZp0A</td>
+  </tr>
+  <tr>
+    <td class="name">ScoresMapper$MockitoMock$4biTJWCE$auxiliary$xYJukNLw</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.demo.domain.mapper;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.demo.domain.bo.Scores;
+<i class="no-highlight">4</i>&nbsp;import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+<i class="no-highlight">5</i>&nbsp;import com.demo.domain.vo.ScoreInfoVo;
+<i class="no-highlight">6</i>&nbsp;import org.apache.ibatis.annotations.Param;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.stereotype.Repository;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import java.util.List;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;/**
+<i class="no-highlight">13</i>&nbsp; * @author Lewis
+<i class="no-highlight">14</i>&nbsp; */
+<i class="no-highlight">15</i>&nbsp;@Repository
+<i class="no-highlight">16</i>&nbsp;public interface ScoresMapper extends BaseMapper&lt;Scores&gt;{
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;    List&lt;ScoreInfoVo&gt; findScoreInfoList(@Param(&quot;type&quot;) String type, @Param(&quot;classes&quot;) String classes, @Param(&quot;name&quot;) String name);
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    List&lt;ScoreInfoVo&gt; findAvgScoreInforlist(@Param(&quot;type&quot;) String type, @Param(&quot;classes&quot;) String classes, @Param(&quot;subject&quot;) String subject);
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-16 16:00</div>
+</div>
+</body>
+</html>
